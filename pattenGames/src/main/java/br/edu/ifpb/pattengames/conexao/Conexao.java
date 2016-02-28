@@ -15,30 +15,25 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
-
 public class Conexao implements ConexaoIF {
 
     private Connection conn;
     private static Properties prop = null;
 
+    /**
+     * Cofigura as propriedade do banco de dados Que está na pasta
+     * \pattenGames\recursos
+     */
     public Conexao() throws SQLException, IOException, ClassNotFoundException {
         try {
-//           String driver = "org.postgresql.Driver";
-//            String url = "jdbc:postgresql://localhost:5432/PatternGames";
-//            String user = "postgres";
-//            String password = "123456";            
-//            prop.load(new FileInputStream("/resources/connection.properties"));
-//            prop.load(new FileInputStream(getClass().getResource("/resources/conexao.properties").getPath()));
-            
-            
-              Properties prop = new Properties();
+
+            Properties prop = new Properties();
             FileInputStream file = new FileInputStream(".//recursos/connection.properties");
             prop.load(file);
             String url = prop.getProperty("url");
             String user = prop.getProperty("user");
             String password = prop.getProperty("password");
 
-            
             Class.forName("org.postgresql.Driver");
             this.conn = DriverManager.getConnection(url, user, password);
         } catch (IOException | ClassNotFoundException | SQLException e) {
