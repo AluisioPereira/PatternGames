@@ -1,0 +1,24 @@
+﻿CREATE TABLE CLIENTE(
+	id serial,
+	nome VARCHAR(50) NOT NULL UNIQUE,
+	cpf VARCHAR(15) NOT NULL UNIQUE,
+	email VARCHAR(60) NOT NULL UNIQUE,
+	PRIMARY KEY(id)
+
+);
+CREATE TABLE JOGO(
+	id serial,
+	nome VARCHAR(40) NOT NULL, 
+	PRIMARY KEY(id)
+);
+CREATE TABLE LOCACAO(
+	id serial,
+	idcliente INTEGER NOT NULL,
+	idjogo INTEGER NOT NULL,
+	dataloccao DATE,
+	dataentrega DATE,
+	tipo VARCHAR(7),
+	PRIMARY KEY(id),
+	FOREIGN KEY(idcliente) REFERENCES CLIENTE (id), 
+	FOREIGN KEY(idjogo) REFERENCES JOGO(id)
+)
