@@ -14,6 +14,8 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import br.edu.ifpb.pattengames.conexao.Conexao;
+import com.sun.org.apache.bcel.internal.classfile.ClassFormatException;
+import java.sql.ResultSet;
 
 /**
  *
@@ -25,10 +27,11 @@ public class ClienteDao implements ClienteDaoIf {
 
     @Override
     public boolean add(Cliente cliente) {
+        // certo
         boolean result = false;
         PreparedStatement stat = null;
         String sql = "INSERT INTO CLIENTE (nome,cpf, email)"
-                +  "VALUES(?, ?, ?)";
+                + "VALUES(?, ?, ?)";
         try {
             conn = new Conexao();
             stat = conn.getConnection().prepareStatement(sql);
@@ -55,22 +58,134 @@ public class ClienteDao implements ClienteDaoIf {
 
     @Override
     public boolean remover(Cliente cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // certo
+        boolean result = false;
+        PreparedStatement ps = null;
+
+        try {
+            conn = new Conexao();
+            String sql = "DELETE FROM Cliente WHERE id = ?";
+            ps = conn.getConnection().prepareStatement(sql);
+            ps.setInt(1, cliente.getId());
+            if (ps.executeUpdate() > 0) {
+                result = true;
+            }
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            System.err.println("Erro " + e.getMessage());
+            Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                conn.closeAll(ps);
+            } catch (DataBaseException ex) {
+                Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        return result;
     }
 
     @Override
     public Cliente buscaPorNome(String nome) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // certo
+        Cliente cliente = null;
+        PreparedStatement pst;
+        String consulta = "SELECT * FROM cliente WHERE nome = ?";
+
+        try {
+            conn = new Conexao();
+            pst = conn.getConnection().prepareStatement(consulta);
+            pst.setString(1, nome);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                cliente = montarUsuario(rs);
+            }
+
+            conn.closeAll(pst);
+        } catch (SQLException | IOException | ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return cliente;
     }
 
     @Override
+    // certo
     public Cliente buscaPorId(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Cliente cliente = null;
+        PreparedStatement pst;
+        String consulta = "SELECT * FROM cliente WHERE id = ?";
+
+        try {
+            conn = new Conexao();
+            pst = conn.getConnection().prepareStatement(consulta);
+            pst.setInt(1, id);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                cliente = montarUsuario(rs);
+            }
+
+            conn.closeAll(pst);
+        } catch (SQLException | IOException | ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return cliente;
+    }
+
+    public Cliente buscaPorEmail(String email) {
+        // certo
+        Cliente cliente = null;
+        PreparedStatement pst;
+        String consulta = "SELECT * FROM cliente WHERE email = ?";
+
+        try {
+            conn = new Conexao();
+            pst = conn.getConnection().prepareStatement(consulta);
+            pst.setString(1, email);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                cliente = montarUsuario(rs);
+            }
+
+            conn.closeAll(pst);
+        } catch (SQLException | IOException | ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return cliente;
     }
 
     @Override
     public boolean alterar(Cliente cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //certo
+        boolean result = false;
+        PreparedStatement stat = null;
+        try {
+            conn = new Conexao();
+            String sql = "UPDATE cliente SET nome = ?, cpf = ?, email = ?"
+                    + "WHERE id = ?";
+            stat = conn.getConnection().prepareStatement(sql);
+            stat.setString(1, cliente.getNome());
+            stat.setString(2, cliente.getCPF());
+            stat.setString(3, cliente.getEmail());
+            stat.setInt(4, cliente.getId());
+
+            if (stat.executeUpdate() > 0) {
+                result = true;
+            }
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            System.err.println("Erro " + e.getMessage());
+        }
+        return result;
+    }
+
+    private Cliente montarUsuario(ResultSet rs) throws SQLException {
+        Cliente c = new Cliente();
+        c.setId(rs.getInt("id"));
+        c.setNome(rs.getString("nome"));
+        c.setEmail(rs.getString("email"));
+        c.setCPF(rs.getString("cpf"));
+        return c;
     }
 
 }

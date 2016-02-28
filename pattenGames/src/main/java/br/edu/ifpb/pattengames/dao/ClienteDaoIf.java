@@ -24,5 +24,6 @@ public interface ClienteDaoIf {
     public Cliente buscaPorId(int id);
     
     public boolean alterar(Cliente cliente);
+     public Cliente buscaPorEmail(String email);
 
 }
