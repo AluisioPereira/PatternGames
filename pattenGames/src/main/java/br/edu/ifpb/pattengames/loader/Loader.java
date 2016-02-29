@@ -5,6 +5,7 @@
  */
 package br.edu.ifpb.pattengames.loader;
 
+import br.edu.ifpb.pattengames.model.ValidaCPF;
 import br.edu.ifpb.pattengames.dao.*;
 import br.edu.ifpb.pattengames.dao.ClienteDaoIf;
 import br.edu.ifpb.pattengames.entidades.Cliente;
@@ -32,8 +33,13 @@ public class Loader {
         j.setNome("jogo e34");
         j.setId(3);
         DaoFactoryIF fabrica = new DaoFactoryDB();
-       c =  fabrica.criaClienteDao().buscaPorId(4);
-        System.out.println("jogo "+ c.getNome());
+     //  c =  fabrica.criaClienteDao().buscaPorId(4);
+     //   System.out.println("jogo "+ c.getNome());
+        ValidaCPF x= new ValidaCPF();
+       if( x.validaCPF("210.085.401-10"))
+        System.err.println("CPF valido");
+       else
+        System.err.println("errro");
     }
 
 }
