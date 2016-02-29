@@ -1,0 +1,14 @@
+br\edu\ifpb\pattengames\dao\JogoDaoIf.class
+br\edu\ifpb\pattengames\conexao\ConexaoIF.class
+br\edu\ifpb\pattengames\conexao\DataBaseException.class
+br\edu\ifpb\pattengames\loader\Loader.class
+br\edu\ifpb\pattengames\factoy\DaoFactoryDB.class
+br\edu\ifpb\pattengames\entidades\Jogo.class
+br\edu\ifpb\pattengames\factoy\DaoFactoryIF.class
+br\edu\ifpb\pattengames\factoy\DaoFactory.class
+br\edu\ifpb\pattengames\entidades\Cliente.class
+br\edu\ifpb\pattengames\entidades\Locacao.class
+br\edu\ifpb\pattengames\dao\ClienteDaoIf.class
+br\edu\ifpb\pattengames\dao\ClienteDao.class
+br\edu\ifpb\pattengames\conexao\Conexao.class
+br\edu\ifpb\pattengames\dao\JogoDao.class
