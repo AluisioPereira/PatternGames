@@ -9,6 +9,8 @@ import br.edu.ifpb.pattengames.dao.*;
 import br.edu.ifpb.pattengames.dao.ClienteDaoIf;
 import br.edu.ifpb.pattengames.entidades.Cliente;
 import br.edu.ifpb.pattengames.entidades.Jogo;
+import br.edu.ifpb.pattengames.factoy.DaoFactoryDB;
+import br.edu.ifpb.pattengames.factoy.DaoFactoryIF;
 
 /**
  *
@@ -29,7 +31,9 @@ public class Loader {
         Jogo j = new Jogo();
         j.setNome("jogo e34");
         j.setId(3);
-        System.out.println("jogo "+ dj.alterar(j));
+        DaoFactoryIF fabrica = new DaoFactoryDB();
+       c =  fabrica.criaClienteDao().buscaPorId(4);
+        System.out.println("jogo "+ c.getNome());
     }
 
 }
