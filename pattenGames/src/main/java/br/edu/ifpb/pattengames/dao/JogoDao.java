@@ -9,6 +9,7 @@ import br.edu.ifpb.pattengames.entidades.Jogo;
 import java.sql.PreparedStatement;
 import br.edu.ifpb.pattengames.conexao.*;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -36,6 +37,8 @@ public class JogoDao implements JogoDaoIf {
             }
         } catch (SQLException | IOException | ClassNotFoundException e) {
             Logger.getLogger(JogoDao.class.getName()).log(Level.SEVERE, null, e);
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(JogoDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 conn.closeAll(stat);
@@ -63,6 +66,8 @@ public class JogoDao implements JogoDaoIf {
         } catch (SQLException | IOException | ClassNotFoundException e) {
             System.err.println("Erro " + e.getMessage());
             Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, e);
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(JogoDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 conn.closeAll(ps);
@@ -92,6 +97,8 @@ public class JogoDao implements JogoDaoIf {
             conn.closeAll(pst);
         } catch (SQLException | IOException | ClassNotFoundException ex) {
             Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(JogoDao.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return jogo;
@@ -115,6 +122,8 @@ public class JogoDao implements JogoDaoIf {
             conn.closeAll(pst);
         } catch (SQLException | IOException | ClassNotFoundException ex) {
             Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(JogoDao.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return jogo;
@@ -137,6 +146,8 @@ public class JogoDao implements JogoDaoIf {
             }
         } catch (SQLException | IOException | ClassNotFoundException e) {
             System.err.println("Erro " + e.getMessage());
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(JogoDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return result;
     }

@@ -21,15 +21,16 @@ public class Conexao implements ConexaoIF {
     private static Properties prop = null;
 
     /**
-     * Cofigura as propriedade do banco de dados Que está na pasta
-     * \pattenGames\recursos
+     * Configura as propriedade do banco de dados Que está na pasta
+     * \pattenGames\resources
      */
-    public Conexao() throws SQLException, IOException, ClassNotFoundException {
+    public Conexao() throws SQLException, IOException, ClassNotFoundException, URISyntaxException {
         try {
 
-            Properties prop = new Properties();
-            FileInputStream file = new FileInputStream(".//recursos/connection.properties");
-            prop.load(file);
+            prop = new Properties();            
+            prop.load(new FileInputStream(getClass().getResource("/recursos/connection.properties").toURI().getPath()));
+            
+            
             String url = prop.getProperty("url");
             String user = prop.getProperty("user");
             String password = prop.getProperty("password");

@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import br.edu.ifpb.pattengames.conexao.Conexao;
 import com.sun.org.apache.bcel.internal.classfile.ClassFormatException;
+import java.net.URISyntaxException;
 import java.sql.ResultSet;
 
 /**
@@ -45,6 +46,8 @@ public class ClienteDao implements ClienteDaoIf {
         } catch (SQLException | ClassNotFoundException | IOException ex) {
             Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
 
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 conn.closeAll(stat);
@@ -73,6 +76,8 @@ public class ClienteDao implements ClienteDaoIf {
         } catch (SQLException | IOException | ClassNotFoundException e) {
             System.err.println("Erro " + e.getMessage());
             Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, e);
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 conn.closeAll(ps);
@@ -103,6 +108,8 @@ public class ClienteDao implements ClienteDaoIf {
             conn.closeAll(pst);
         } catch (SQLException | IOException | ClassNotFoundException ex) {
             Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return cliente;
@@ -127,6 +134,8 @@ public class ClienteDao implements ClienteDaoIf {
             conn.closeAll(pst);
         } catch (SQLException | IOException | ClassNotFoundException ex) {
             Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return cliente;
@@ -149,6 +158,8 @@ public class ClienteDao implements ClienteDaoIf {
 
             conn.closeAll(pst);
         } catch (SQLException | IOException | ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (URISyntaxException ex) {
             Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -175,6 +186,8 @@ public class ClienteDao implements ClienteDaoIf {
             }
         } catch (SQLException | IOException | ClassNotFoundException e) {
             System.err.println("Erro " + e.getMessage());
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return result;
     }
