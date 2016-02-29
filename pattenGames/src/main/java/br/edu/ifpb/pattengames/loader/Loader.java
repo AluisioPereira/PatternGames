@@ -5,16 +5,17 @@
  */
 package br.edu.ifpb.pattengames.loader;
 
-import br.edu.ifpb.pattengames.dao.ClienteDao;
+import br.edu.ifpb.pattengames.dao.*;
 import br.edu.ifpb.pattengames.dao.ClienteDaoIf;
 import br.edu.ifpb.pattengames.entidades.Cliente;
+import br.edu.ifpb.pattengames.entidades.Jogo;
 
 /**
  *
  * @author José
  */
 public class Loader {
-
+//certo
     public static void main(String[] args) {
         Cliente c = new Cliente();
         c.setCPF("132.353.411-21");
@@ -22,8 +23,13 @@ public class Loader {
         c.setEmail("joseferreira@gmail.com");
         c.setId(1);
         ClienteDaoIf dao = new ClienteDao();
+        JogoDaoIf dj = new JogoDao();
        // System.out.println("resut " + dao.buscaPorEmail("jose@gmail.com").getEmail());
-        dao.add(c);
+        //dao.add(c);
+        Jogo j = new Jogo();
+        j.setNome("jogo e34");
+        j.setId(3);
+        System.out.println("jogo "+ dj.alterar(j));
     }
 
 }

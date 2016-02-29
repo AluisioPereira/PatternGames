@@ -5,68 +5,58 @@
  */
 package br.edu.ifpb.pattengames.dao;
 
-import br.edu.ifpb.pattengames.entidades.Cliente;
-import br.edu.ifpb.pattengames.conexao.ConexaoIF;
-import br.edu.ifpb.pattengames.conexao.DataBaseException;
-import java.io.IOException;
+import br.edu.ifpb.pattengames.entidades.Jogo;
 import java.sql.PreparedStatement;
+import br.edu.ifpb.pattengames.conexao.*;
+import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import br.edu.ifpb.pattengames.conexao.Conexao;
-import com.sun.org.apache.bcel.internal.classfile.ClassFormatException;
-import java.sql.ResultSet;
 
 /**
  *
  * @author José
  */
-public class ClienteDao implements ClienteDaoIf {
+public class JogoDao implements JogoDaoIf {
 
-    private ConexaoIF conn;
+    private ConexaoIF conn = null;
+    private PreparedStatement stat = null;
 
     @Override
-    public boolean add(Cliente cliente) {
-        // certo
+    public boolean add(Jogo jogo) {
         boolean result = false;
-        PreparedStatement stat = null;
-        String sql = "INSERT INTO CLIENTE (nome,cpf, email)"
-                + "VALUES(?, ?, ?)";
+        String sql = "INSERT INTO jogo(nome) VALUES(?)";
         try {
             conn = new Conexao();
             stat = conn.getConnection().prepareStatement(sql);
-            stat.setString(1, cliente.getNome());
-            stat.setString(2, cliente.getCPF());
-            stat.setString(3, cliente.getEmail());
+            stat.setString(1, jogo.getNome());
             if (stat.executeUpdate() > 0) {
                 result = true;
             }
-
-        } catch (SQLException | ClassNotFoundException | IOException ex) {
-            Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
-
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            Logger.getLogger(JogoDao.class.getName()).log(Level.SEVERE, null, e);
         } finally {
             try {
                 conn.closeAll(stat);
             } catch (DataBaseException ex) {
-                Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(JogoDao.class.getName()).log(Level.SEVERE, null, ex);
             }
-
         }
         return result;
     }
 
     @Override
-    public boolean remover(Cliente cliente) {
+    public boolean remover(Jogo jogo) {
         // certo
         boolean result = false;
         PreparedStatement ps = null;
 
         try {
             conn = new Conexao();
-            String sql = "DELETE FROM Cliente WHERE id = ?";
+            String sql = "DELETE FROM Jogo WHERE id = ?";
             ps = conn.getConnection().prepareStatement(sql);
-            ps.setInt(1, cliente.getId());
+            ps.setInt(1, jogo.getId());
             if (ps.executeUpdate() > 0) {
                 result = true;
             }
@@ -85,11 +75,10 @@ public class ClienteDao implements ClienteDaoIf {
     }
 
     @Override
-    public Cliente buscaPorNome(String nome) {
-        // certo
-        Cliente cliente = null;
+    public Jogo buscaPorNome(String nome) {
+          Jogo jogo = null;
         PreparedStatement pst;
-        String consulta = "SELECT * FROM cliente WHERE nome = ?";
+        String consulta = "SELECT * FROM Jogo WHERE nome = ?";
 
         try {
             conn = new Conexao();
@@ -97,7 +86,7 @@ public class ClienteDao implements ClienteDaoIf {
             pst.setString(1, nome);
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
-                cliente = montarCliente(rs);
+                jogo = montarJogo(rs);
             }
 
             conn.closeAll(pst);
@@ -105,15 +94,14 @@ public class ClienteDao implements ClienteDaoIf {
             Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return cliente;
+        return jogo;
     }
 
     @Override
-    // certo
-    public Cliente buscaPorId(int id) {
-        Cliente cliente = null;
+    public Jogo buscaPorId(int id) {
+          Jogo jogo = null;
         PreparedStatement pst;
-        String consulta = "SELECT * FROM cliente WHERE id = ?";
+        String consulta = "SELECT * FROM Jogo WHERE id = ?";
 
         try {
             conn = new Conexao();
@@ -121,7 +109,7 @@ public class ClienteDao implements ClienteDaoIf {
             pst.setInt(1, id);
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
-                cliente = montarCliente(rs);
+                jogo = montarJogo(rs);
             }
 
             conn.closeAll(pst);
@@ -129,46 +117,20 @@ public class ClienteDao implements ClienteDaoIf {
             Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return cliente;
-    }
-
-    public Cliente buscaPorEmail(String email) {
-        // certo
-        Cliente cliente = null;
-        PreparedStatement pst;
-        String consulta = "SELECT * FROM cliente WHERE email = ?";
-
-        try {
-            conn = new Conexao();
-            pst = conn.getConnection().prepareStatement(consulta);
-            pst.setString(1, email);
-            ResultSet rs = pst.executeQuery();
-            if (rs.next()) {
-                cliente = montarCliente(rs);
-            }
-
-            conn.closeAll(pst);
-        } catch (SQLException | IOException | ClassNotFoundException ex) {
-            Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return cliente;
+        return jogo;
     }
 
     @Override
-    public boolean alterar(Cliente cliente) {
-        //certo
-        boolean result = false;
+    public boolean alterar(Jogo jogo) {
+         boolean result = false;
         PreparedStatement stat = null;
         try {
             conn = new Conexao();
-            String sql = "UPDATE cliente SET nome = ?, cpf = ?, email = ?"
+            String sql = "UPDATE JOGO SET nome = ?"
                     + "WHERE id = ?";
             stat = conn.getConnection().prepareStatement(sql);
-            stat.setString(1, cliente.getNome());
-            stat.setString(2, cliente.getCPF());
-            stat.setString(3, cliente.getEmail());
-            stat.setInt(4, cliente.getId());
+            stat.setString(1, jogo.getNome());
+            stat.setInt(2, jogo.getId());
 
             if (stat.executeUpdate() > 0) {
                 result = true;
@@ -179,13 +141,11 @@ public class ClienteDao implements ClienteDaoIf {
         return result;
     }
 
-    private Cliente montarCliente(ResultSet rs) throws SQLException {
-        Cliente c = new Cliente();
-        c.setId(rs.getInt("id"));
-        c.setNome(rs.getString("nome"));
-        c.setEmail(rs.getString("email"));
-        c.setCPF(rs.getString("cpf"));
-        return c;
+    private Jogo montarJogo(ResultSet rs) throws SQLException {
+        Jogo j = new Jogo();
+        j.setId(rs.getInt("id"));
+        j.setNome(rs.getString("nome"));
+        return j;
     }
 
 }
