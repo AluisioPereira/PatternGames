@@ -17,8 +17,8 @@ CREATE TABLE LOCACAO(
 	idcliente INTEGER NOT NULL,
 	idjogo INTEGER NOT NULL,
 	dataloccao DATE,
-	dataentrega DATE,
-	tipo VARCHAR(7),
+	datadevolucao DATE,
+	tipo VARCHAR(9),
 	PRIMARY KEY(id),
 	FOREIGN KEY(idcliente) REFERENCES CLIENTE (id), 
 	FOREIGN KEY(idjogo) REFERENCES JOGO(id)
