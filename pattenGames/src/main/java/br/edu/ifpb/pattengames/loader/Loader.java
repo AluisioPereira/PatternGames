@@ -12,7 +12,10 @@ import br.edu.ifpb.pattengames.entidades.Cliente;
 import br.edu.ifpb.pattengames.entidades.Jogo;
 import br.edu.ifpb.pattengames.factoy.DaoFactoryDB;
 import br.edu.ifpb.pattengames.factoy.DaoFactoryIF;
+import br.edu.ifpb.pattengames.model.CalculaMulta;
 import br.edu.ifpb.pattengames.model.EnviarEmail;
+import br.edu.ifpb.pattengames.model.MultaAtrasoLocacaoComum;
+import br.edu.ifpb.pattengames.model.MultaAtrasoLocacaoEspecial;
 
 /**
  *
@@ -47,6 +50,9 @@ public class Loader {
 //        System.err.println("Cliente "+c.getEmail()+", jogo "+dj.buscaPorId(2).getNome());
 //        EnviarEmail email= new EnviarEmail();
 //        email.enviarEmail(c, dj.buscaPorId(2));
+        CalculaMulta xx = new MultaAtrasoLocacaoEspecial();
+        
+        System.err.println("Valor da multa "+xx.calcularMulta("03/03/2016"));
     }
 
 }

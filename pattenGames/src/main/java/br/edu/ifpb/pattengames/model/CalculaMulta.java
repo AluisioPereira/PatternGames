@@ -5,10 +5,14 @@
  */
 package br.edu.ifpb.pattengames.model;
 
+import java.math.BigDecimal;
+import javafx.scene.chart.PieChart.Data;
+
 /**
  *
  * @author José
  */
 public interface CalculaMulta {
-    
+
+    public BigDecimal calcularMulta(String dataLocacao);
 }
