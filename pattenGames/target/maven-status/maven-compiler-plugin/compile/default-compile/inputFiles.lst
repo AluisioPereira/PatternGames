@@ -1,4 +1,5 @@
 D:\Users\José\Documents\NetBeansProjects\PatternGames\pattenGames\src\main\java\br\edu\ifpb\pattengames\dao\ClienteDaoIf.java
+D:\Users\José\Documents\NetBeansProjects\PatternGames\pattenGames\src\main\java\br\edu\ifpb\pattengames\model\ValidaCPF.java
 D:\Users\José\Documents\NetBeansProjects\PatternGames\pattenGames\src\main\java\br\edu\ifpb\pattengames\conexao\ConexaoIF.java
 D:\Users\José\Documents\NetBeansProjects\PatternGames\pattenGames\src\main\java\br\edu\ifpb\pattengames\factoy\DaoFactoryIF.java
 D:\Users\José\Documents\NetBeansProjects\PatternGames\pattenGames\src\main\java\br\edu\ifpb\pattengames\dao\JogoDaoIf.java
@@ -8,6 +9,7 @@ D:\Users\José\Documents\NetBeansProjects\PatternGames\pattenGames\src\main\java\
 D:\Users\José\Documents\NetBeansProjects\PatternGames\pattenGames\src\main\java\br\edu\ifpb\pattengames\entidades\Cliente.java
 D:\Users\José\Documents\NetBeansProjects\PatternGames\pattenGames\src\main\java\br\edu\ifpb\pattengames\conexao\Conexao.java
 D:\Users\José\Documents\NetBeansProjects\PatternGames\pattenGames\src\main\java\br\edu\ifpb\pattengames\factoy\DaoFactoryDB.java
+D:\Users\José\Documents\NetBeansProjects\PatternGames\pattenGames\src\main\java\br\edu\ifpb\pattengames\model\EnviarEmail.java
 D:\Users\José\Documents\NetBeansProjects\PatternGames\pattenGames\src\main\java\br\edu\ifpb\pattengames\entidades\Locacao.java
 D:\Users\José\Documents\NetBeansProjects\PatternGames\pattenGames\src\main\java\br\edu\ifpb\pattengames\factoy\DaoFactory.java
 D:\Users\José\Documents\NetBeansProjects\PatternGames\pattenGames\src\main\java\br\edu\ifpb\pattengames\conexao\DataBaseException.java

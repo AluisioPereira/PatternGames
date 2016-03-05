@@ -5,6 +5,10 @@
  */
 package br.edu.ifpb.pattengames.entidades;
 
+import br.edu.ifpb.pattengames.state.Alugado;
+import br.edu.ifpb.pattengames.state.Disponivel;
+import br.edu.ifpb.pattengames.state.StateIF;
+
 /**
  *
  * @author José
@@ -12,6 +16,32 @@ package br.edu.ifpb.pattengames.entidades;
 public class Jogo {
     
     private int id;
+    private StateIF estado;
+    private String nome;
+
+    public Jogo() {
+        this.estado = new Disponivel();
+    }
+    
+
+    /**
+     * Get the value of estado
+     *
+     * @return the value of estado
+     */
+    public StateIF getEstado() {
+        return estado;
+    }
+
+    /**
+     * Set the value of estado
+     *
+     * @param estado new value of estado
+     */
+    public void setEstado(StateIF estado) {
+        this.estado = estado;
+    }
+
 
     /**
      * Get the value of id
@@ -31,7 +61,7 @@ public class Jogo {
         this.id = id;
     }
 
-    private String nome;
+    
 
     /**
      * Get the value of nome
@@ -49,6 +79,17 @@ public class Jogo {
      */
     public void setNome(String nome) {
         this.nome = nome;
+    }
+    
+
+    
+    public void alugado(){
+        this.estado = estado.alugado();
+    }
+
+    
+    public void devolver(){
+        this.estado = estado.devolver();
     }
 
     
