@@ -5,6 +5,8 @@
  */
 package br.edu.ifpb.pattengames.entidades;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -12,10 +14,12 @@ import java.util.Objects;
  * @author José
  */
 public class Locacao {
-
+private int id;
     private Cliente cliente;
     private Jogo jogo;
     private String tipo;
+    private LocalDate dataLocacao;
+    private LocalDate dataDevolucao;
 
     public Cliente getCliente() {
         return cliente;
@@ -40,7 +44,22 @@ public class Locacao {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    
+
+    public LocalDate getDataLocacao() {
+        return dataLocacao;
+    }
+
+    public void setDataLocacao(LocalDate dataLocacao) {
+        this.dataLocacao = dataLocacao;
+    }
+
+    public LocalDate getDataDevolucao() {
+        return dataDevolucao;
+    }
+
+    public void setDataDevolucao(LocalDate dataDevolucao) {
+        this.dataDevolucao = dataDevolucao;
+    }
 
     @Override
     public int hashCode() {
@@ -49,6 +68,15 @@ public class Locacao {
         hash = 89 * hash + Objects.hashCode(this.jogo);
         return hash;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
 
     @Override
     public boolean equals(Object obj) {

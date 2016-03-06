@@ -5,6 +5,7 @@
  */
 package br.edu.ifpb.pattengames.model;
 
+import br.com.caelum.stella.ValidationMessage;
 import br.com.caelum.stella.validation.CPFValidator;
 import br.com.caelum.stella.validation.InvalidStateException;
 
@@ -13,18 +14,18 @@ import br.com.caelum.stella.validation.InvalidStateException;
  * @author José
  */
 public class ValidaCPF {
-    public boolean validaCPF(String cpf){
-        CPFValidator validator = new CPFValidator();
-        try {
-    // lógica de negócio ...
-            new CPFValidator().assertValid(cpf);
-   // validator.assertValid(cpf);
     
-} catch (InvalidStateException e) { // exception lançada quando o documento é inválido
-    System.out.println(e.getInvalidMessages());
-    return false;
-}
+
+    public  boolean validaCPF(String cpf) {
+
+        CPFValidator vld = new CPFValidator();
+        for (ValidationMessage error : vld.invalidMessagesFor(cpf)) {
+            System.out.println(error.getMessage());
+            if(!vld.isEligible(cpf) )
+                return false;
+        }
         return true;
+        
     }
-    
+
 }

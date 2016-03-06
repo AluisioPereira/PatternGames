@@ -16,7 +16,7 @@ CREATE TABLE LOCACAO(
 	id serial,
 	idcliente INTEGER NOT NULL,
 	idjogo INTEGER NOT NULL,
-	dataloccao DATE,
+	datalocacao DATE,
 	datadevolucao DATE,
 	tipo VARCHAR(9),
 	PRIMARY KEY(id),

@@ -91,5 +91,10 @@ public class Cliente {
         this.CPF = CPF;
     }
 
+    @Override
+    public String toString() {
+        return "Cliente{" + "id=" + id + ", nome=" + nome + ", email=" + email + ", CPF=" + CPF + '}';
+    }
+
     
 }

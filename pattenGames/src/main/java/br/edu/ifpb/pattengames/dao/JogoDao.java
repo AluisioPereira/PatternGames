@@ -161,12 +161,12 @@ public class JogoDao implements JogoDaoIf {
         
         Jogo j = new Jogo();
         j.setId(rs.getInt("id"));
-        j.setEstado(tipoestado(rs.getString("estado")));
+        j.setEstado(alteraEstado(rs.getString("estado")));
         j.setNome(rs.getString("nome"));
         return j;
     }
 
-    private StateIF tipoestado(String tipo) {
+    private StateIF alteraEstado(String tipo) {
         if (tipo.equalsIgnoreCase(Alugado.class.getSimpleName())) {
             return new Alugado();
         } else {
