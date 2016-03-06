@@ -5,16 +5,13 @@
  */
 package br.edu.ifpb.pattengames.contole;
 
-import br.com.caelum.stella.validation.InvalidStateException;
 import br.edu.ifpb.pattengames.entidades.Cliente;
 import br.edu.ifpb.pattengames.exception.EmailExistenteException;
 import br.edu.ifpb.pattengames.model.BuscaClienteBo;
 import br.edu.ifpb.pattengames.model.CadastroClienteBO;
 import br.edu.ifpb.pattengames.model.ValidaCPF;
-import br.edu.ifpb.pattengames.model.VerificarCadastroBo;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -46,20 +43,20 @@ public class ServletCadastroCliente extends HttpServlet {
         HttpSession sessao = request.getSession();
 //        response.getWriter().flush();
         PrintWriter out = response.getWriter();
-        out.print("passou 1"+request.getParameter("cpf"));
+        //  out.print("passou 1"+request.getParameter("cpf"));
         Cliente cliente = montarUsuario(request);
-        out.print("passou 2 "+cliente.toString());
+        out.print("passou 2 " + cliente.toString());
 
-        Map<String, String> resultadoVerificacao = VerificarCadastroBo.execute(cliente);
-        out.print("vvvv"+resultadoVerificacao.get("cpf"));
-
+   //     Map<String, String> resultadoVerificacao = VerificarCadastroBo.execute(cliente);
+        // out.print("vvvv"+resultadoVerificacao.get("cpf"));
         boolean resultadoCadastro = false;
 // resultadoVerificacao.get("passou").equals("true"
         if (cliente != null) {
-            CadastroClienteBO boCadastro = new CadastroClienteBO();
-            out.print("passou if");
+
             try {
-                resultadoCadastro = boCadastro.cadastrar(cliente);
+                CadastroClienteBO boCadastro = new CadastroClienteBO();
+                boolean cc = resultadoCadastro = boCadastro.cadastrar(cliente);
+                out.print("cadastrou " + cc);
             } catch (EmailExistenteException ex) {
                 Logger.getLogger(ServletCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
                 System.err.println(ex.getMessage());
@@ -123,7 +120,7 @@ public class ServletCadastroCliente extends HttpServlet {
     }// </editor-fold>
 
     private Cliente montarUsuario(HttpServletRequest request) {
-         
+
         Cliente cliente = new Cliente();
         if (request.getParameter("nome") != null) {
             cliente.setNome(request.getParameter("nome"));
@@ -132,13 +129,10 @@ public class ServletCadastroCliente extends HttpServlet {
             cliente.setEmail(request.getParameter("email"));
         }
         ValidaCPF ValidaCPF = new ValidaCPF();
-        if (ValidaCPF.validaCPF(request.getParameter("cpf")))
-       
+        if (ValidaCPF.validaCPF(request.getParameter("cpf"))) {
             cliente.setCPF(request.getParameter("cpf"));
-        return cliente;
         }
-
-        
+        return cliente;
     }
 
-
+}

@@ -7,8 +7,6 @@ package br.edu.ifpb.pattengames.dao;
 
 import br.edu.ifpb.pattengames.entidades.Cliente;
 
-
-
 /**
  *
  * @author José
@@ -22,8 +20,11 @@ public interface ClienteDaoIf {
     public Cliente buscaPorNome(String nome);
 
     public Cliente buscaPorId(int id);
-    
+
     public boolean alterar(Cliente cliente);
-     public Cliente buscaPorEmail(String email);
+
+    public Cliente buscaPorEmail(String email);
+
+    public Cliente buscaPorCPF(String cpf);
 
 }

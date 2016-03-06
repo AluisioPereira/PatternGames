@@ -191,6 +191,30 @@ public class ClienteDao implements ClienteDaoIf {
         }
         return result;
     }
+    public Cliente buscaPorCPF(String cpf){
+        Cliente cliente = null;
+        PreparedStatement pst;
+        String consulta = "SELECT * FROM cliente WHERE cpf = ?";
+
+        try {
+            conn = new Conexao();
+            pst = conn.getConnection().prepareStatement(consulta);
+            pst.setString(1, cpf);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                cliente = montarCliente(rs);
+            }
+
+            conn.closeAll(pst);
+        } catch (SQLException | IOException | ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return cliente;
+        
+    }
 
     private Cliente montarCliente(ResultSet rs) throws SQLException {
         Cliente c = new Cliente();

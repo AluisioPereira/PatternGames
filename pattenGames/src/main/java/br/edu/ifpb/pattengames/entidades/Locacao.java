@@ -6,6 +6,7 @@
 package br.edu.ifpb.pattengames.entidades;
 
 import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
 
@@ -13,7 +14,7 @@ import java.util.Objects;
  *
  * @author José
  */
-public class Locacao {
+public abstract class Locacao {
 private int id;
     private Cliente cliente;
     private Jogo jogo;
@@ -76,6 +77,7 @@ private int id;
     public void setId(int id) {
         this.id = id;
     }
+    public abstract LocalDate dataDevolver();
     
 
     @Override
@@ -94,6 +96,11 @@ private int id;
             return false;
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Locacao{" + "id=" + id + ", cliente=" + cliente + ", jogo=" + jogo + ", tipo=" + tipo + ", dataLocacao=" + dataLocacao + ", dataDevolucao=" + dataDevolucao + '}';
     }
 
 }

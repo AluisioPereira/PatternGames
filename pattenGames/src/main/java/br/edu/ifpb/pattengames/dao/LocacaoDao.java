@@ -10,6 +10,9 @@ import br.edu.ifpb.pattengames.conexao.ConexaoIF;
 import br.edu.ifpb.pattengames.conexao.DataBaseException;
 import br.edu.ifpb.pattengames.entidades.Locacao;
 import br.edu.ifpb.pattengames.factoy.DaoFactory;
+import br.edu.ifpb.pattengames.factoy.FactoyLocacao;
+import br.edu.ifpb.pattengames.factoy.FactoyLocacaoIF;
+import br.edu.ifpb.pattengames.factoy.FactoyLocaxao;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.sql.Date;
@@ -18,6 +21,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import jdk.nashorn.internal.runtime.regexp.JoniRegExp;
 
 /**
  *
@@ -193,7 +197,7 @@ public class LocacaoDao implements LocacaoDaoIF {
 
     private Locacao montarLocacao(ResultSet rs) throws SQLException {
 
-        Locacao l = new Locacao();
+        Locacao l = FactoyLocacao.createFactory(FactoyLocacao.LOCACAO).criarLocacao();
         l.setCliente(DaoFactory.createFactory(DaoFactory.DAO_BD).criaClienteDao().buscaPorId(Integer.parseInt(rs.getString("idcliente"))));
         l.setJogo(DaoFactory.createFactory(DaoFactory.DAO_BD).criaJogoDao().buscaPorId(Integer.parseInt(rs.getString("idjogo"))));
         l.setDataLocacao(rs.getDate("datalocacao").toLocalDate());
