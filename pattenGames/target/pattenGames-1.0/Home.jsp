@@ -8,7 +8,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,7 +27,7 @@
         <!-- main site css file -->    
         <link href="style.css" rel="stylesheet" title="default">
         <link href="contraste.css" rel=" alternate stylesheet" title="contraste">
-         <link href="icomoon/style.css" rel="stylesheet" title="default">
+        <link href="icomoon/style.css" rel="stylesheet" title="default">
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -39,7 +38,7 @@
 
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>HomePagina</title>
     </head>
     <body style="padding: 1% 8% 4% 8%">
 
@@ -49,46 +48,12 @@
         <div class="menu">
             <%@ include file="barraMenu.jsp"%>
         </div>
+        <%@include file="Jogos.jsp" %>
 
-        
-
-        <h1>CORPO DA APLICAÇÃO</h1>
-
-        <section id="mainContent">
-            <!-- start main content top -->
-            <div class="content_top">
-                <div class="row">
-                    <!-- start content top latest slider -->
-                    <div class="col-lg-6 col-md-6 col-sm6">             
-                        <div class="latest_slider">
-                            <!-- Set up your HTML -->
-                            <div class="slick_slider">
-                                <div class="single_iteam">
-                                    <img src="img/CarsMatr.jpg" alt="img">
-                                    <h2><a class="slider_tittle" href="single.html">CarsMater</a></h2>
-                                </div>
-                                <div class="single_iteam">
-                                    <img src="img/Devil Sunnoner.jpg" alt="img">
-                                    <h2><a class="slider_tittle" href="single.html">Devil Sunnoner</a></h2>
-                                </div>
-                                <div class="single_iteam">
-                                    <img src="img/princeOfPersia.jpg" alt="img">
-                                    <h2><a class="slider_tittle" href="single.html">Prince of Persia</a></h2>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div> <!-- End content top latest slider -->
-
-                </div>
-            </div><!-- End main content top -->
-            <!-- start main content Middle -->
-
-        </section><!-- End site main content -->
-
-
+        <hr>
+        <hr>
+        <br>
         <%@ include file="rodape.jsp" %>
-
         <script type="text/javascript" src="js/acessibilidade.js"></script>
 
         <!-- jQuery google CDN Library -->
