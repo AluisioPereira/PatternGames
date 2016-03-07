@@ -48,7 +48,9 @@ public class Loader {
         j.setNome("FIFA 14");
         j.devolver();
         //j.setId(5);
-      //  dj.add(j);
+        //  dj.add(j);
+        Cliente cc = dao.buscaPorCPF("132.353.411-21");
+        System.err.println("aaa "+cc.toString());
         System.err.println("jogos "+dj.buscaPorNome("FIFA 14").getNome());
         // j.setId(3);
         //  DaoFactoryIF fabrica = new DaoFactoryDB();
@@ -66,18 +68,19 @@ public class Loader {
         System.out.println("Data: " + dataAtual);
 
 
-        Jogo cj = dj.buscaPorNome("FIFA 17");
+        Jogo cj = dj.buscaPorNome("FIFA 14");
         System.err.println("=========="+cj.getNome());
-//        Cliente cl = dao.buscaPorCPF("132.353.411-21");
-//         Locacao l = FactoyLocacao.createFactory(FactoyLocacao.LOCACAO).criarLocacao();
-//         System.err.println("cccccccccccccccc"+l.getClass().getSimpleName());
-//         System.err.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"+cl.getCPF()+"zzzzzzzzz  "+cj.getNome());
+        Cliente cl = dao.buscaPorCPF("132.353.411-21");
+        Locacao l = FactoyLocacao.createFactory(FactoyLocacao.LOCACAO).criarLocacao();
+       System.err.println("cccccccccccccccc"+l.getClass().getSimpleName());
+        System.err.println("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv"+cl.getCPF()+"zzzzzzzzz  "+cj.getNome());
 //         l.setCliente(cl);
+        dj.alterar(l.getJogo());
 //         l.setJogo(cj);
 //         System.err.println("\\\\\\\\"+l.getDataDevolucao()+"qqq "+l.getDataLocacao());
-//         CadastroLocacaoBo ddd = new CadastroLocacaoBo();
-//        boolean d = ddd.cadastrar(l);
-//        System.err.println("============="+d);
+        CadastroLocacaoBo ddd = new CadastroLocacaoBo();
+        boolean d = ddd.cadastrar(l);
+        System.err.println("============="+d);
 //        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 //      ;//  Locacao l = new Locacao();
 //        //l.setCliente(dao.buscaPorId(4));
@@ -92,7 +95,7 @@ public class Loader {
        // Locacao xx = dl.buscaPorIdCliente(dao.buscaPorId(4).getNome());
        // System.err.println("Valor da multa "+xx.getDataDevolucao());
         ValidaCPF s = new ValidaCPF();
-        boolean cc = s.validaCPF("185.302.491-0");
+       // boolean cc = s.validaCPF("185.302.491-0");
         System.err.println(cc);
     }
 

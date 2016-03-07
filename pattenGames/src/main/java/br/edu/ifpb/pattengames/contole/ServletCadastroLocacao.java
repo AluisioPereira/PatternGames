@@ -42,15 +42,20 @@ public class ServletCadastroLocacao extends HttpServlet {
             throws ServletException, IOException, LocacaoExistenteException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+     //   out.print("passou "+request.getParameter("cpf"));
+     //   out.print("passou "+request.getParameter(""));
+      //  out.print("passou "+request.getParameter("nomejogo"));
         Locacao locacao = montarLocacao(request);
-        out.print("cpf "+request.getParameter("cpf"));
-        out.print("nome jogo "+request.getParameter("nomejogo"));
+       // out.print("cpf "+request.getParameter("cpf"));
+       // out.print("nome jogo "+request.getParameter("nomejogo"));
         out.print("-------------------------------------------------- ");
         out.print("locaçao  "+locacao);
         CadastroLocacaoBo bo = new CadastroLocacaoBo();
         boolean cadastrou = false;
         if (locacao != null) {
+            out.print("passou "+request.getParameter("cpf"));
             cadastrou = bo.cadastrar(locacao);
+             out.print("-------------------------------------------------- "+cadastrou);
         }
 
         if (cadastrou) {
@@ -107,7 +112,10 @@ public class ServletCadastroLocacao extends HttpServlet {
     }// </editor-fold>
 
     private Locacao montarLocacao(HttpServletRequest request) {
-        Cliente cliente = DaoFactory.createFactory(DaoFactory.DAO_BD).criaClienteDao().buscaPorCPF(request.getParameter("cpf"));
+        String cpf= null;
+        if(request.getParameter("cpf") != null)
+            cpf = request.getParameter("cpf");
+        Cliente cliente = DaoFactory.createFactory(DaoFactory.DAO_BD).criaClienteDao().buscaPorCPF(cpf);
         Jogo jogo = DaoFactory.createFactory(DaoFactory.DAO_BD).criaJogoDao().buscaPorNome(request.getParameter("nomejogo"));
         Locacao l = FactoyLocacao.createFactory(FactoyLocacao.LOCACAO).criarLocacao();
         l.setCliente(cliente);
