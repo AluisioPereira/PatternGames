@@ -10,7 +10,7 @@ import br.edu.ifpb.pattengames.entidades.Jogo;
 import br.edu.ifpb.pattengames.entidades.Locacao;
 import br.edu.ifpb.pattengames.exception.LocacaoExistenteException;
 import br.edu.ifpb.pattengames.factoy.DaoFactory;
-import br.edu.ifpb.pattengames.factoy.FactoyLocacao;
+import br.edu.ifpb.pattengames.factoy.LocacaoFavtoy;
 import br.edu.ifpb.pattengames.model.CadastroLocacaoBo;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -42,24 +42,23 @@ public class ServletCadastroLocacao extends HttpServlet {
             throws ServletException, IOException, LocacaoExistenteException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-     //   out.print("passou "+request.getParameter("cpf"));
-     //   out.print("passou "+request.getParameter(""));
-      //  out.print("passou "+request.getParameter("nomejogo"));
+        //   out.print("passou "+request.getParameter("cpf"));
+        //   out.print("passou "+request.getParameter(""));
+        //  out.print("passou "+request.getParameter("nomejogo"));
         Locacao locacao = montarLocacao(request);
-       // out.print("cpf "+request.getParameter("cpf"));
-       // out.print("nome jogo "+request.getParameter("nomejogo"));
-        out.print("-------------------------------------------------- ");
-        out.print("locaçao  "+locacao);
         CadastroLocacaoBo bo = new CadastroLocacaoBo();
         boolean cadastrou = false;
         if (locacao != null) {
-            out.print("passou "+request.getParameter("cpf"));
+            out.print("passou " + request.getParameter("cpf"));
             cadastrou = bo.cadastrar(locacao);
-             out.print("-------------------------------------------------- "+cadastrou);
+
         }
 
         if (cadastrou) {
             request.getRequestDispatcher("paginaadequada").forward(request, response);
+        } else {
+            request.setAttribute("resultado", cadastrou);
+            request.getRequestDispatcher("home").forward(request, response);
         }
 
     }
@@ -112,14 +111,15 @@ public class ServletCadastroLocacao extends HttpServlet {
     }// </editor-fold>
 
     private Locacao montarLocacao(HttpServletRequest request) {
-        String cpf= null;
-        if(request.getParameter("cpf") != null)
+        String cpf = null;
+        Locacao l = LocacaoFavtoy.createFactory(LocacaoFavtoy.LOCACAO).criarLocacao();
+        if (request.getParameter("cpf") != null) {
             cpf = request.getParameter("cpf");
-        Cliente cliente = DaoFactory.createFactory(DaoFactory.DAO_BD).criaClienteDao().buscaPorCPF(cpf);
-        Jogo jogo = DaoFactory.createFactory(DaoFactory.DAO_BD).criaJogoDao().buscaPorNome(request.getParameter("nomejogo"));
-        Locacao l = FactoyLocacao.createFactory(FactoyLocacao.LOCACAO).criarLocacao();
-        l.setCliente(cliente);
-        l.setJogo(jogo);
+            Cliente cliente = DaoFactory.createFactory(DaoFactory.DAO_BD).criaClienteDao().buscaPorCPF(cpf);
+            Jogo jogo = DaoFactory.createFactory(DaoFactory.DAO_BD).criaJogoDao().buscaPorNome(request.getParameter("nomejogo"));
+            l.setCliente(cliente);
+            l.setJogo(jogo);
+        }
 
         return l;
     }

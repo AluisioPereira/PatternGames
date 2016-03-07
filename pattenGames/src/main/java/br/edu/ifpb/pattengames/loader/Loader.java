@@ -12,7 +12,7 @@ import br.edu.ifpb.pattengames.entidades.Locacao;
 import br.edu.ifpb.pattengames.exception.LocacaoExistenteException;
 import java.text.ParseException;
 import br.edu.ifpb.pattengames.factoy.DaoFactory;
-import br.edu.ifpb.pattengames.factoy.FactoyLocacao;
+import br.edu.ifpb.pattengames.factoy.LocacaoFavtoy;
 import br.edu.ifpb.pattengames.model.CadastroLocacaoBo;
 
 /**
@@ -34,7 +34,7 @@ public class Loader {
 //        boolean f = dj.alterar(j);
         //System.out.println("resut "+j.getEstado()+"devolver "+f);
         CadastroLocacaoBo bo = new CadastroLocacaoBo();
-        Locacao l = FactoyLocacao.createFactory(FactoyLocacao.LOCACAO).criarLocacao();
+        Locacao l = LocacaoFavtoy.createFactory(LocacaoFavtoy.LOCACAO).criarLocacao();
         
         l.setCliente(dao.buscaPorId(37));
         System.err.println(l.getCliente());

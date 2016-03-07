@@ -5,21 +5,27 @@
  */
 package br.edu.ifpb.pattengames.factoy;
 
-import static br.edu.ifpb.pattengames.factoy.DaoFactory.DAO_BD;
+import br.edu.ifpb.pattengames.entidades.Locacao;
+import br.edu.ifpb.pattengames.entidades.LocacaoComum;
+import br.edu.ifpb.pattengames.entidades.LocacaoEspecial;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.util.Calendar;
 
 /**
  *
  * @author José
  */
-public class FactoyLocacao {
-     public static final int LOCACAO = 0;
+public class FactoyLocacao implements FactoyLocacaoIF {
+    private  LocalDate hoje = LocalDate.now();
 
-    public static FactoyLocacaoIF createFactory(int factoryType) {
-        if (factoryType == DAO_BD) {
-            return new FactoyLocaxao();
-           
-       
+    @Override
+    public Locacao   criarLocacao() {
+        DayOfWeek diaDaSemana = hoje.getDayOfWeek();
+        if (diaDaSemana == DayOfWeek.FRIDAY || diaDaSemana == DayOfWeek.SATURDAY || diaDaSemana == DayOfWeek.SUNDAY) {
+            return new LocacaoEspecial();
+        }
+        return new LocacaoComum();
     }
-         return null;
-}
+
 }
