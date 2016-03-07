@@ -5,6 +5,10 @@
  */
 package br.edu.ifpb.pattengames.model;
 
+import br.edu.ifpb.pattengames.dao.ClienteDao;
+import br.edu.ifpb.pattengames.dao.ClienteDaoIf;
+import br.edu.ifpb.pattengames.dao.JogoDaoIf;
+import br.edu.ifpb.pattengames.entidades.Jogo;
 import br.edu.ifpb.pattengames.entidades.Locacao;
 import br.edu.ifpb.pattengames.exception.LocacaoExistenteException;
 import br.edu.ifpb.pattengames.factoy.DaoFactory;
@@ -18,7 +22,6 @@ public class CadastroLocacaoBo {
 
     public CadastroLocacaoBo() {
     }
-    
 
     public boolean cadastrar(Locacao locacao) throws LocacaoExistenteException {
         DaoFactoryIF factory = DaoFactory.createFactory(DaoFactory.DAO_BD);
@@ -43,6 +46,13 @@ public class CadastroLocacaoBo {
         if (buscarExistente != null) {
             throw new LocacaoExistenteException(locacao.getDataDevolucao());
         }
-        return factory.criaLocacaoDao().add(locacao);
+        if (factory.criaLocacaoDao().add(locacao)) {
+            ClienteDaoIf dao = new ClienteDao();
+            JogoDaoIf dj = DaoFactory.createFactory(DaoFactory.DAO_BD).criaJogoDao();
+            Jogo j = dj.buscaPorId(locacao.getJogo().getId());
+            j.alugado();
+            return dj.alterar(j);
+        }
+        return false;
     }
 }
