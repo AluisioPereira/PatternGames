@@ -50,15 +50,17 @@ public class ServletCadastroLocacao extends HttpServlet {
         boolean cadastrou = false;
         if (locacao != null) {
             out.print("passou " + request.getParameter("cpf"));
-            cadastrou = bo.cadastrar(locacao);
 
         }
 
-        if (cadastrou) {
-            request.getRequestDispatcher("paginaadequada").forward(request, response);
-        } else {
-            request.setAttribute("resultado", cadastrou);
-            request.getRequestDispatcher("home").forward(request, response);
+        try {
+            cadastrou = bo.cadastrar(locacao);
+            if (cadastrou) {
+                request.getRequestDispatcher("paginaadequa").forward(request, response);
+            }
+        } catch (LocacaoExistenteException ex) {
+            Logger.getLogger(ServletCadastroLocacao.class.getName()).log(Level.SEVERE, null, ex);
+            response.sendRedirect("jogoLocado.html");
         }
 
     }
