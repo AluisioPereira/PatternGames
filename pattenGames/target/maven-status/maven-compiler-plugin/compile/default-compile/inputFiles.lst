@@ -11,7 +11,6 @@ D:\Users\José\Documents\NetBeansProjects\PatternGames\pattenGames\src\main\java\
 D:\Users\José\Documents\NetBeansProjects\PatternGames\pattenGames\src\main\java\br\edu\ifpb\pattengames\contole\ServletCadastroLocacao.java
 D:\Users\José\Documents\NetBeansProjects\PatternGames\pattenGames\src\main\java\br\edu\ifpb\pattengames\exception\LocacaoExistenteException.java
 D:\Users\José\Documents\NetBeansProjects\PatternGames\pattenGames\src\main\java\br\edu\ifpb\pattengames\factoy\DaoFactoryDB.java
-D:\Users\José\Documents\NetBeansProjects\PatternGames\pattenGames\src\main\java\br\edu\ifpb\pattengames\factoy\FactoyLocaxao.java
 D:\Users\José\Documents\NetBeansProjects\PatternGames\pattenGames\src\main\java\br\edu\ifpb\pattengames\model\EnviarEmail.java
 D:\Users\José\Documents\NetBeansProjects\PatternGames\pattenGames\src\main\java\br\edu\ifpb\pattengames\factoy\FactoyLocacao.java
 D:\Users\José\Documents\NetBeansProjects\PatternGames\pattenGames\src\main\java\br\edu\ifpb\pattengames\loader\Loader.java
@@ -28,8 +27,10 @@ D:\Users\José\Documents\NetBeansProjects\PatternGames\pattenGames\src\main\java\
 D:\Users\José\Documents\NetBeansProjects\PatternGames\pattenGames\src\main\java\br\edu\ifpb\pattengames\dao\LocacaoDaoIF.java
 D:\Users\José\Documents\NetBeansProjects\PatternGames\pattenGames\src\main\java\br\edu\ifpb\pattengames\model\CadastroClienteBO.java
 D:\Users\José\Documents\NetBeansProjects\PatternGames\pattenGames\src\main\java\br\edu\ifpb\pattengames\state\StateIF.java
+D:\Users\José\Documents\NetBeansProjects\PatternGames\pattenGames\src\main\java\br\edu\ifpb\pattengames\factoy\LocacaoFavtoy.java
 D:\Users\José\Documents\NetBeansProjects\PatternGames\pattenGames\src\main\java\br\edu\ifpb\pattengames\conexao\Conexao.java
 D:\Users\José\Documents\NetBeansProjects\PatternGames\pattenGames\src\main\java\br\edu\ifpb\pattengames\model\CadastroLocacaoBo.java
+D:\Users\José\Documents\NetBeansProjects\PatternGames\pattenGames\src\main\java\br\edu\ifpb\pattengames\contole\ServletAtualizarCliente.java
 D:\Users\José\Documents\NetBeansProjects\PatternGames\pattenGames\src\main\java\br\edu\ifpb\pattengames\dao\LocacaoDao.java
 D:\Users\José\Documents\NetBeansProjects\PatternGames\pattenGames\src\main\java\br\edu\ifpb\pattengames\model\CalculaMulta.java
 D:\Users\José\Documents\NetBeansProjects\PatternGames\pattenGames\src\main\java\br\edu\ifpb\pattengames\entidades\Locacao.java

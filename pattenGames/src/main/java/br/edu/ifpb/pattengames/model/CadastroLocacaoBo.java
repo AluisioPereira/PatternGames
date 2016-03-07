@@ -42,9 +42,10 @@ public class CadastroLocacaoBo {
             return false;
         }
 
-        Locacao buscarExistente = factory.criaLocacaoDao().buscaPorId(locacao.getId());
+        Jogo buscarExistente = DaoFactory.createFactory(DaoFactory.DAO_BD).criaJogoDao().buscaPorId(locacao.getJogo().getId());
         if (buscarExistente != null) {
-            throw new LocacaoExistenteException(locacao.getDataDevolucao());
+            throw new LocacaoExistenteException();
+            
         }
         if (factory.criaLocacaoDao().add(locacao)) {
             ClienteDaoIf dao = new ClienteDao();

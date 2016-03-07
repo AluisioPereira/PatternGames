@@ -13,8 +13,8 @@ import java.time.LocalDate;
  */
 public class LocacaoExistenteException extends Exception{
 
-    public LocacaoExistenteException(LocalDate data) {
-        super("jogo já locado ate "+data);
+    public LocacaoExistenteException() {
+        super("jogo já locado ");
     }
     
 }

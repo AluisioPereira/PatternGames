@@ -1,5 +1,6 @@
 br\edu\ifpb\pattengames\dao\JogoDaoIf.class
 br\edu\ifpb\pattengames\exception\LocacaoExistenteException.class
+br\edu\ifpb\pattengames\factoy\LocacaoFavtoy.class
 br\edu\ifpb\pattengames\model\BuscaClienteBo.class
 br\edu\ifpb\pattengames\conexao\DataBaseException.class
 br\edu\ifpb\pattengames\state\StateIF.class
@@ -15,7 +16,6 @@ br\edu\ifpb\pattengames\contole\ServletCadastroLocacao.class
 br\edu\ifpb\pattengames\conexao\Conexao.class
 br\edu\ifpb\pattengames\dao\LocacaoDao.class
 br\edu\ifpb\pattengames\factoy\FactoyLocacaoIF.class
-br\edu\ifpb\pattengames\factoy\FactoyLocaxao.class
 br\edu\ifpb\pattengames\model\CadastroClienteBO.class
 br\edu\ifpb\pattengames\state\Disponivel.class
 br\edu\ifpb\pattengames\conexao\ConexaoIF.class
@@ -39,3 +39,4 @@ br\edu\ifpb\pattengames\state\Alugado.class
 br\edu\ifpb\pattengames\dao\JogoDao.class
 br\edu\ifpb\pattengames\entidades\LocacaoComum.class
 br\edu\ifpb\pattengames\entidades\LocacaoEspecial$1.class
+br\edu\ifpb\pattengames\contole\ServletAtualizarCliente.class

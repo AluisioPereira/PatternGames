@@ -60,7 +60,8 @@ public class ServletCadastroLocacao extends HttpServlet {
             }
         } catch (LocacaoExistenteException ex) {
             Logger.getLogger(ServletCadastroLocacao.class.getName()).log(Level.SEVERE, null, ex);
-            response.sendRedirect("jogoLocado.html");
+            request.setAttribute("idjojoLocado", locacao.getJogo().getId());
+            response.sendRedirect("jogoLocado.jsp");
         }
 
     }
