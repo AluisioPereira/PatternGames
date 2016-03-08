@@ -5,7 +5,7 @@
  */
 package br.edu.ifpb.pattengames.entidades;
 
-import br.edu.ifpb.pattengames.entidades.CalculaMulta;
+import br.edu.ifpb.pattengames.entidades.CalculaMultaIf;
 import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -15,7 +15,7 @@ import java.util.Date;
  *
  * @author José
  */
-public class MultaAtrasoLocacaoEspecial implements CalculaMulta {
+public class MultaAtrasoLocacaoEspecial implements CalculaMultaIf {
 
     @Override
     public BigDecimal calcularMulta(String dataLocacao) {
