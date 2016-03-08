@@ -5,14 +5,15 @@
  */
 package br.edu.ifpb.pattengames.model;
 
-import java.math.BigDecimal;
-import javafx.scene.chart.PieChart.Data;
+import br.edu.ifpb.pattengames.entidades.Locacao;
 
 /**
  *
  * @author José
  */
-public interface CalculaMulta {
-
-    public BigDecimal calcularMulta(String dataLocacao);
+public class CadastrarMultas {
+    public void calcularMulta(Locacao locacao){
+        
+    }
+    
 }

@@ -67,6 +67,7 @@ public class LocacaoDao implements LocacaoDaoIF {
             conn = new Conexao();
             String sql = "DELETE FROM LOCACAO WHERE id = ?";
             ps = conn.getConnection().prepareStatement(sql);
+            
             ps.setInt(1, locacao.getId());
             if (ps.executeUpdate() > 0) {
                 result = true;
@@ -198,7 +199,7 @@ public class LocacaoDao implements LocacaoDaoIF {
         l.setCliente(DaoFactory.createFactory(DaoFactory.DAO_BD).criaClienteDao().buscaPorId(Integer.parseInt(rs.getString("idcliente"))));
         l.setJogo(DaoFactory.createFactory(DaoFactory.DAO_BD).criaJogoDao().buscaPorId(Integer.parseInt(rs.getString("idjogo"))));
         l.setDataLocacao(rs.getDate("datalocacao").toLocalDate());
-        l.setDataLocacao(rs.getDate("datadevolucao").toLocalDate());
+        l.setDataDevolucao(rs.getDate("datadevolucao").toLocalDate());
         l.setTipo(rs.getString("tipo"));
         System.err.println("1--1-1-1--1-" + rs.getDate("datalocacao"));
         return l;

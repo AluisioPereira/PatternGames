@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpb.pattengames.model;
+package br.edu.ifpb.pattengames.entidades;
 
+import br.edu.ifpb.pattengames.entidades.CalculaMultaIf;
 import br.edu.ifpb.pattengames.factoy.DaoFactory;
 import java.math.BigDecimal;
 import java.text.DateFormat;
@@ -19,7 +20,7 @@ import javafx.scene.chart.PieChart.Data;
  *
  * @author José
  */
-public class MultaAtrasoLocacaoComum implements CalculaMulta {
+public class MultaAtrasoLocacaoComum implements CalculaMultaIf {
 
     @Override
     public BigDecimal calcularMulta(String dataLocacao) {

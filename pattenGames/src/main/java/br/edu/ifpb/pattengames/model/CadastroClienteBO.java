@@ -18,10 +18,10 @@ import br.edu.ifpb.pattengames.factoy.DaoFactoryIF;
 public class CadastroClienteBO {
 
     public boolean cadastrar(Cliente cliente) throws EmailExistenteException {
-//        if (verificarDadosUsuario(cliente)){
+        if (verificarDadosUsuario(cliente)){
         return DaoFactory.createFactory(DaoFactory.DAO_BD).criaClienteDao().add(cliente);
-//        }
-//        return false;
+        }
+        return false;
     }
 
     private boolean verificarDadosUsuario(Cliente cliente) throws EmailExistenteException {
