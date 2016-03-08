@@ -17,6 +17,10 @@ import java.util.List;
  */
 public class BuscaClienteBo {
 
+    public BuscaClienteBo() {
+    }
+    
+
     private ClienteDaoIf Clientedao = null;
     private DaoFactoryIF factory = DaoFactory.createFactory(DaoFactory.DAO_BD);
 
@@ -30,4 +34,14 @@ public class BuscaClienteBo {
         return Clientedao.buscaPorEmail(email);
     }
 
+    public Cliente buscarPorCPF(String cpf) {
+        Clientedao = factory.criaClienteDao();
+        return Clientedao.buscaPorCPF(cpf);
+    }
+
+    public List<Cliente> buscarTodos() {
+        Clientedao = factory.criaClienteDao();
+        return Clientedao.buscarTodos();
+
+    }
 }

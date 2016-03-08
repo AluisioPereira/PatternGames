@@ -14,6 +14,7 @@ import br.edu.ifpb.pattengames.exception.LocacaoExistenteException;
 import java.text.ParseException;
 import br.edu.ifpb.pattengames.factoy.DaoFactory;
 import br.edu.ifpb.pattengames.factoy.LocacaoFavtoy;
+import br.edu.ifpb.pattengames.model.BuscaClienteBo;
 import br.edu.ifpb.pattengames.model.CadastroLocacaoBo;
 import java.util.List;
 
@@ -32,7 +33,8 @@ public class Loader {
         ClienteDaoIf dao = new ClienteDao();
         JogoDaoIf dj = DaoFactory.createFactory(DaoFactory.DAO_BD).criaJogoDao();
         Jogo j = dj.buscaPorId(4);
-        List<Cliente> lista = dao.buscarTodos();
+        BuscaClienteBo bo = new BuscaClienteBo();
+        List<Cliente> lista = bo.buscarTodos();
         for(Cliente c: lista)
             System.err.println("lista   "+c.getNome());
 //        j.alugado();
