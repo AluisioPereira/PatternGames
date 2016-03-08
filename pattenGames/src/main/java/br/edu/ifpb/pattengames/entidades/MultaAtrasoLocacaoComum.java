@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpb.pattengames.model;
+package br.edu.ifpb.pattengames.entidades;
 
+import br.edu.ifpb.pattengames.entidades.CalculaMulta;
 import br.edu.ifpb.pattengames.factoy.DaoFactory;
 import java.math.BigDecimal;
 import java.text.DateFormat;
