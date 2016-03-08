@@ -8,6 +8,7 @@ package br.edu.ifpb.pattengames.factoy;
 import br.edu.ifpb.pattengames.dao.ClienteDaoIf;
 import br.edu.ifpb.pattengames.dao.JogoDaoIf;
 import br.edu.ifpb.pattengames.dao.LocacaoDaoIF;
+import br.edu.ifpb.pattengames.dao.ReservasDaoIf;
 
 /**
  *
@@ -20,5 +21,7 @@ public interface DaoFactoryIF {
     public JogoDaoIf criaJogoDao();
 
     public LocacaoDaoIF criaLocacaoDao();
+
+    public ReservasDaoIf criaReservaDao();
 
 }

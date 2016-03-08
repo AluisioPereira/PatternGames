@@ -11,6 +11,8 @@ import br.edu.ifpb.pattengames.dao.JogoDao;
 import br.edu.ifpb.pattengames.dao.JogoDaoIf;
 import br.edu.ifpb.pattengames.dao.LocacaoDao;
 import br.edu.ifpb.pattengames.dao.LocacaoDaoIF;
+import br.edu.ifpb.pattengames.dao.ReservaDao;
+import br.edu.ifpb.pattengames.dao.ReservasDaoIf;
 
 /**
  *
@@ -31,6 +33,10 @@ public class DaoFactoryDB implements DaoFactoryIF {
     @Override
     public LocacaoDaoIF criaLocacaoDao() {
         return new LocacaoDao();
+    }
+
+    public ReservasDaoIf criaReservaDao() {
+        return new ReservaDao();
     }
 
 }

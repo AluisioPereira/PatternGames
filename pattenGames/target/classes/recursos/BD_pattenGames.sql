@@ -30,10 +30,10 @@ CREATE TABLE MULTA(
 );
 CREATE TABLE RESERVARJOGO(
          id serial,
-        idcliente INTEGER NOT NULL,
-	idjogo INTEGER NOT NULL,
+        emailCliente VARCHAR(60) NOT NULL,
+	nomejogo VARCHAR(40) NOT NULL,
         PRIMARY KEY(id),
-	FOREIGN KEY(idcliente) REFERENCES CLIENTE (id), 
-	FOREIGN KEY(idjogo) REFERENCES JOGO(id)
+	FOREIGN KEY(emailCliente) REFERENCES CLIENTE (email), 
+	FOREIGN KEY(nomejogo) REFERENCES JOGO(nome)
 
 )
