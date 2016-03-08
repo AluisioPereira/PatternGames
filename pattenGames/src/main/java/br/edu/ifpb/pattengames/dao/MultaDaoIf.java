@@ -7,6 +7,7 @@ package br.edu.ifpb.pattengames.dao;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -17,6 +18,7 @@ public interface MultaDaoIf {
     public boolean add(Integer idCliente, BigDecimal multa);
 
     public boolean remover(Integer idCliente);
-    public List<Integer> busca(Integer idCliente);
+
+    public Map buscaCliente(Integer idCliente);
 
 }

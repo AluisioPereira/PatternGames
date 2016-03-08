@@ -136,6 +136,13 @@ public class JogoDao implements JogoDaoIf {
         return jogo;
     }
 
+    public boolean devolver(Jogo jogo) {
+        if (jogo != null) {
+            return alterar(jogo);
+        }
+        return false;
+    }
+
     @Override
     public List<Jogo> buscarTodos() {
         List<Jogo> lista = new ArrayList<>();

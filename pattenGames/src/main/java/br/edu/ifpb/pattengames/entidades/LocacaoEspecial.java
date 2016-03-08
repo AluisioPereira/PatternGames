@@ -6,7 +6,7 @@
 package br.edu.ifpb.pattengames.entidades;
 
 import br.edu.ifpb.pattengames.Enum.TipoLocacao;
-import br.edu.ifpb.pattengames.model.DevolucaoBo;
+import br.edu.ifpb.pattengames.model.DevolucaoBO;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;

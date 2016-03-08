@@ -25,5 +25,8 @@ public interface JogoDaoIf {
     public boolean alterar(Jogo jogo);
 
     public List<Jogo> buscarTodos();
+    
+    public boolean devolver(Jogo jogo);
+    
 
 }

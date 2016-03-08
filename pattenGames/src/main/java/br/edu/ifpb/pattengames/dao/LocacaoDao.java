@@ -67,6 +67,7 @@ public class LocacaoDao implements LocacaoDaoIF {
             conn = new Conexao();
             String sql = "DELETE FROM LOCACAO WHERE id = ?";
             ps = conn.getConnection().prepareStatement(sql);
+            
             ps.setInt(1, locacao.getId());
             if (ps.executeUpdate() > 0) {
                 result = true;

@@ -5,10 +5,14 @@
  */
 package br.edu.ifpb.pattengames.model;
 
+import br.edu.ifpb.pattengames.entidades.Jogo;
+
 /**
  *
  * @author José
  */
-public class DevolucaoBo {
-    
+public class DevolucaoBO {
+ //   public boolean devolucao(Jogo jogo){
+        
+  //  }
 }
