@@ -27,4 +27,13 @@ CREATE TABLE MULTA(
 	idcliente INTEGER NOT NULL,
         muta DOUBLE PRECISION NOT NULL,
        PRIMARY KEY(idcliente)
+);
+CREATE TABLE RESERVARJOGO(
+         id serial,
+        idcliente INTEGER NOT NULL,
+	idjogo INTEGER NOT NULL,
+        PRIMARY KEY(id),
+	FOREIGN KEY(idcliente) REFERENCES CLIENTE (id), 
+	FOREIGN KEY(idjogo) REFERENCES JOGO(id)
+
 )

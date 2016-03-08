@@ -32,8 +32,8 @@ public class Loader {
 //        c.setEmail("joseferreira@gmail.com");
 //        c.setId(1);
         ClienteDaoIf dao = new ClienteDao();
-        JogoDaoIf dj = DaoFactory.createFactory(DaoFactory.DAO_BD).criaJogoDao();
-        Jogo j = dj.buscaPorId(4);
+        LocacaoDaoIF dj = DaoFactory.createFactory(DaoFactory.DAO_BD).criaLocacaoDao();
+        Locacao j = dj.buscaPorId(4);
         BoscaJogoBo bo = new BoscaJogoBo();
         List<Jogo> ca = bo.buscarTodos();
         for(Jogo c: ca)

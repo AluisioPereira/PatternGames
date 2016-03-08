@@ -11,8 +11,6 @@ import br.edu.ifpb.pattengames.conexao.DataBaseException;
 import br.edu.ifpb.pattengames.entidades.Locacao;
 import br.edu.ifpb.pattengames.factoy.DaoFactory;
 import br.edu.ifpb.pattengames.factoy.LocacaoFavtoy;
-import br.edu.ifpb.pattengames.factoy.FactoyLocacaoIF;
-import br.edu.ifpb.pattengames.factoy.FactoyLocacao;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.sql.Date;
@@ -21,7 +19,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import jdk.nashorn.internal.runtime.regexp.JoniRegExp;
 
 /**
  *
