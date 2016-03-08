@@ -51,6 +51,72 @@
             <%@ include file="barraMenu.jsp"%>
         </div>
 
+        <form class="form-horizontal">
+            <fieldset>
+
+                <form class="form-horizontal" action="">
+                    
+                    <fieldset>
+
+                        <!-- Form Name -->
+                        <legend>Emprestar jogo</legend>
+
+                        <!-- Prepended text-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="cpf"></label>
+                            <div class="col-md-8">
+                                <div class="input-group">
+                                    <span class="input-group-addon">CPF</span>
+                                    <input id="cpf" name="cpf" class="form-control" placeholder="Ex.: 19294954543" type="text">
+                                </div>
+                                <p class="help-block">Informe o CPF do cliente</p>
+                            </div>
+                        </div>
+
+                        <!-- Button -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="cpf"></label>
+                            <div class="col-md-4">
+                                <button id="cpf" name="cpf" class="btn btn-primary">Pesquise</button>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+                <form class="form-horizontal">
+                    <fieldset>
+
+                        <!-- Form Name -->
+                        <legend>Pesquise jogo</legend>
+
+                        <!-- Prepended text-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="jogo"></label>
+                            <div class="col-md-8">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Jogo</span>
+                                    <input id="jogo" name="jogo" class="form-control" placeholder="Ex.: super mário" type="text">
+                                </div>
+                                <p class="help-block">Informe o nome do jogo</p>
+                            </div>
+                        </div>
+
+                        <!-- Button -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="cpf"></label>
+                            <div class="col-md-4">
+                                <button id="cpf" name="cpf" class="btn btn-primary">Pesquise</button>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </fieldset>
+        </form>
+
+
+
+
 
         <h1>Alugar, Devolver Jogos!</h1>
 
@@ -58,7 +124,7 @@
 
         <%@ include file="rodape.jsp" %>
 
-        
+
 
 
         <!-- jQuery google CDN Library -->
