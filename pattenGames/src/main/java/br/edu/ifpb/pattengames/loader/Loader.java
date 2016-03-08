@@ -7,6 +7,7 @@ package br.edu.ifpb.pattengames.loader;
 
 import br.edu.ifpb.pattengames.dao.*;
 import br.edu.ifpb.pattengames.dao.ClienteDaoIf;
+import br.edu.ifpb.pattengames.entidades.Cliente;
 import br.edu.ifpb.pattengames.entidades.Jogo;
 import br.edu.ifpb.pattengames.entidades.Locacao;
 import br.edu.ifpb.pattengames.exception.LocacaoExistenteException;
@@ -14,6 +15,7 @@ import java.text.ParseException;
 import br.edu.ifpb.pattengames.factoy.DaoFactory;
 import br.edu.ifpb.pattengames.factoy.LocacaoFavtoy;
 import br.edu.ifpb.pattengames.model.CadastroLocacaoBo;
+import java.util.List;
 
 /**
  *
@@ -30,19 +32,22 @@ public class Loader {
         ClienteDaoIf dao = new ClienteDao();
         JogoDaoIf dj = DaoFactory.createFactory(DaoFactory.DAO_BD).criaJogoDao();
         Jogo j = dj.buscaPorId(4);
+        List<Cliente> lista = dao.buscarTodos();
+        for(Cliente c: lista)
+            System.err.println("lista   "+c.getNome());
 //        j.alugado();
 //        boolean f = dj.alterar(j);
         //System.out.println("resut "+j.getEstado()+"devolver "+f);
-        CadastroLocacaoBo bo = new CadastroLocacaoBo();
-        Locacao l = LocacaoFavtoy.createFactory(LocacaoFavtoy.LOCACAO).criarLocacao();
-        
-        l.setCliente(dao.buscaPorId(37));
-        System.err.println(l.getCliente());
-        l.setJogo(j);
-        boolean xx = bo.cadastrar(l);
-        System.err.println("cadastro "+xx);
-        //dao.add(c);
-      
+//        CadastroLocacaoBo bo = new CadastroLocacaoBo();
+//        Locacao l = LocacaoFavtoy.createFactory(LocacaoFavtoy.LOCACAO).criarLocacao();
+//        
+//        l.setCliente(dao.buscaPorId(37));
+//        System.err.println(l.getCliente());
+//        l.setJogo(j);
+//        boolean xx = bo.cadastrar(l);
+//        System.err.println("cadastro "+xx);
+//        //dao.add(c);
+//      
     }
 
 }

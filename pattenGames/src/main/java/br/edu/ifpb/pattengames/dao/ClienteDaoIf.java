@@ -6,6 +6,7 @@
 package br.edu.ifpb.pattengames.dao;
 
 import br.edu.ifpb.pattengames.entidades.Cliente;
+import java.util.List;
 
 /**
  *
@@ -26,5 +27,7 @@ public interface ClienteDaoIf {
     public Cliente buscaPorEmail(String email);
 
     public Cliente buscaPorCPF(String cpf);
+
+    public List<Cliente> buscarTodos();
 
 }

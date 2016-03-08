@@ -17,6 +17,8 @@ import br.edu.ifpb.pattengames.conexao.Conexao;
 import com.sun.org.apache.bcel.internal.classfile.ClassFormatException;
 import java.net.URISyntaxException;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -191,7 +193,8 @@ public class ClienteDao implements ClienteDaoIf {
         }
         return result;
     }
-    public Cliente buscaPorCPF(String cpf){
+
+    public Cliente buscaPorCPF(String cpf) {
         Cliente cliente = null;
         PreparedStatement pst;
         String consulta = "SELECT * FROM cliente WHERE cpf = ?";
@@ -213,7 +216,33 @@ public class ClienteDao implements ClienteDaoIf {
         }
 
         return cliente;
-        
+
+    }
+
+    @Override
+    public List<Cliente> buscarTodos(){
+        List<Cliente> lista = new ArrayList<>();
+
+        PreparedStatement pst = null;
+
+        try {
+            conn = new Conexao();
+            pst = conn.getConnection().prepareStatement("SELECT * FROM Cliente");
+
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+                lista.add(montarCliente(rs));
+            }
+
+            conn.closeAll(pst);
+        } catch (SQLException | IOException | ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return lista;
     }
 
     private Cliente montarCliente(ResultSet rs) throws SQLException {
