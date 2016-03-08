@@ -11,6 +11,7 @@ import br.edu.ifpb.pattengames.entidades.Locacao;
 import br.edu.ifpb.pattengames.exception.LocacaoExistenteException;
 import br.edu.ifpb.pattengames.factoy.DaoFactory;
 import br.edu.ifpb.pattengames.factoy.LocacaoFavtoy;
+import br.edu.ifpb.pattengames.model.BuscaClienteBo;
 import br.edu.ifpb.pattengames.model.CadastroLocacaoBo;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -118,7 +119,8 @@ public class ServletCadastroLocacao extends HttpServlet {
         Locacao l = LocacaoFavtoy.createFactory(LocacaoFavtoy.LOCACAO).criarLocacao();
         if (request.getParameter("cpf") != null) {
             cpf = request.getParameter("cpf");
-            Cliente cliente = DaoFactory.createFactory(DaoFactory.DAO_BD).criaClienteDao().buscaPorCPF(cpf);
+            BuscaClienteBo bo = new BuscaClienteBo();
+            Cliente cliente = bo.buscarPorCPF(cpf);
             Jogo jogo = DaoFactory.createFactory(DaoFactory.DAO_BD).criaJogoDao().buscaPorNome(request.getParameter("nomejogo"));
             l.setCliente(cliente);
             l.setJogo(jogo);

@@ -6,22 +6,24 @@
 package br.edu.ifpb.pattengames.dao;
 
 import br.edu.ifpb.pattengames.entidades.Jogo;
-
-
+import java.util.List;
 
 /**
  *
  * @author José
  */
 public interface JogoDaoIf {
-     public boolean add(Jogo jogo);
+
+    public boolean add(Jogo jogo);
 
     public boolean remover(Jogo jogo);
 
     public Jogo buscaPorNome(String nome);
 
     public Jogo buscaPorId(int id);
-    
+
     public boolean alterar(Jogo jogo);
-    
+
+    public List<Jogo> buscarTodos();
+
 }

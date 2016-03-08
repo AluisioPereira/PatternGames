@@ -14,7 +14,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import br.edu.ifpb.pattengames.conexao.Conexao;
-import com.sun.org.apache.bcel.internal.classfile.ClassFormatException;
 import java.net.URISyntaxException;
 import java.sql.ResultSet;
 import java.util.ArrayList;
